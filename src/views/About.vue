@@ -13,7 +13,7 @@ export default {
     </p>
 
     <p class="subtitle">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt ea unde sed molestiae enim aliquid fuga expedita fugiat necessitatibus? Laborum suscipit impedit reprehenderit a. Maxime vero esse fugit ducimus voluptatibus.
+      Lorem ipsum dolor, sit amet consectetur adipisicit. Incidunt ea unde sed molestiae enim aliquid fuga expedita fugiat necessitatibus? Laborum suscipit impedit reprehenderit a. Maxime vero esse fugit ducimus voluptatibus.
     </p>
 
     <h1 class="second-title">Pourquoi ?</h1>
