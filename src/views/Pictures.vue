@@ -28,7 +28,7 @@ function slugify(text) {
         color="blue"
         variant="elevated"
         rounded="xl"
-        :image="card.image"
+        :image="card.images ? card.images[0] : card.image"
         v-bind="card.url
           ? { href: card.url, target: '_blank', rel: 'noopener' }
           : { is: RouterLink, to: { name: 'PicturesDetails', params: { slug: slugify(card.title) } } }"
