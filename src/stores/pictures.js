@@ -41,7 +41,7 @@ export const usePicturesStore = defineStore("pictures", {
           " Le chapiteau Basic 500 est une alternative fonctionnelle et économique à nos chapiteaux en PVC. Les dimensions des chapiteaux sont 5 x 10 m.",
         prices: [
           { title: "Location journée", price: "120 €" },
-          { title: "Location week-end", price: "180 €" },
+          { title: "Location week-end", price: "200 €" },
           {
             title: "Frais de livraison",
             price: "Offerts si rayon < 10 km autour de Gailon",
@@ -83,12 +83,12 @@ export const usePicturesStore = defineStore("pictures", {
           {
             title:
               "Forfait 1 : 1 assiette plate + 1 petite assiette + 1 verre à vin + 1 verre à eau + couverts (couteau, fourchette, petite cuillère",
-            price: "??? €",
+            price: "1,90 €",
           },
           {
             title:
               "Forfait 2 : Forfait 1 + 1 verre à cocktail + 1 flûte à champagne + 1 tasse + sous-tasse à café",
-            price: "??? €",
+            price: "2,60 €",
           },
           {
             title: "Frais de livraison",
