@@ -5,23 +5,26 @@ import { usePicturesStore } from '@/stores/pictures'
 
 const route = useRoute()
 const picturesStore = usePicturesStore()
+
 const card = picturesStore.getBySlug(route.params.slug)
 
-// État pour l'image agrandie
+// Zoom image
 const selectedImage = ref(null)
 
 const openZoom = (url) => {
   selectedImage.value = url
-  // Empêche le scroll du corps de la page quand l'image est ouverte
   document.body.style.overflow = 'hidden'
 }
 
 const closeZoom = () => {
   selectedImage.value = null
-  // Réactive le scroll
   document.body.style.overflow = 'auto'
 }
 
+// Prix
+const prices = computed(() => card?.prices ?? [])
+
+// Subtitles dynamiques
 const subtitles = computed(() => {
   if (!card) return []
   return Object.keys(card)
@@ -34,18 +37,45 @@ const subtitles = computed(() => {
 
 <template>
   <div v-if="card">
+
     <div class="container">
+
+      <!-- TITRE -->
       <h1 class="title">{{ card.title }}</h1>
       <p class="subtitle">{{ card.subtitle1 }}</p>
 
-      <img
-        v-if="card.images?.length"
-        class="image zoom-trigger"
-        :src="card.images[0]"
-        alt=""
-        @click="openZoom(card.images[0])"
-      />
+      <!-- 🔥 IMAGE + PRIX (GRID FIXE) -->
+      <div class="top-section">
 
+        <!-- IMAGE -->
+        <img
+          v-if="card.images?.length"
+          class="image zoom-trigger"
+          :src="card.images[0]"
+          alt=""
+          @click="openZoom(card.images[0])"
+        />
+
+        <!-- PRIX -->
+        <ul v-if="prices.length" class="price-list">
+          <li
+            v-for="p in prices"
+            :key="p.title"
+            class="price-card"
+          >
+            <div class="price-title">
+              {{ p.title }}
+            </div>
+
+            <div class="price-value">
+              {{ p.price }}
+            </div>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- SUBTITLES -->
       <p
         v-for="(subtitle, index) in subtitles"
         :key="index"
@@ -53,8 +83,11 @@ const subtitles = computed(() => {
         v-html="subtitle"
       ></p>
 
+      <!-- GALERIE -->
       <div v-if="card.images?.length > 1" class="gallery">
+
         <h2 class="gallery-title">Plus de photos</h2>
+
         <div class="gallery-grid">
           <img
             v-for="(img, idx) in card.images.slice(1)"
@@ -64,17 +97,26 @@ const subtitles = computed(() => {
             @click="openZoom(img)"
           />
         </div>
+
       </div>
+
     </div>
 
+    <!-- LIGHTBOX -->
     <Transition name="fade">
       <div v-if="selectedImage" class="lightbox" @click="closeZoom">
         <button class="close-btn" @click="closeZoom">&times;</button>
+
         <div class="lightbox-content">
-          <img :src="selectedImage" class="lightbox-img" @click.stop />
+          <img
+            :src="selectedImage"
+            class="lightbox-img"
+            @click.stop
+          />
         </div>
       </div>
     </Transition>
+
   </div>
 </template>
 
@@ -85,35 +127,76 @@ const subtitles = computed(() => {
   align-items: center;
   text-align: center;
   padding: 1rem;
+  color: white;
 }
 
+/* TITRE */
 .title {
   margin-top: 5vh;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: white;
   max-width: 40vw;
 }
 
 .subtitle {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: white;
   max-width: 40vw;
   white-space: pre-wrap;
 }
 
-.image {
-  max-width: 40vw;
+/* 🔥 GRID FIX */
+.top-section {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-top: 1vh;
-  margin-bottom: 8vh;
-  transition: transform 0.3s ease;
+  max-width: 1100px;
+  margin: 2vh auto 6vh auto;
 }
 
+/* IMAGE */
+.image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* PRIX */
+.price-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.price-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+}
+
+.price-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.price-value {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* ZOOM */
 .zoom-trigger {
   cursor: zoom-in;
 }
@@ -122,6 +205,7 @@ const subtitles = computed(() => {
   filter: brightness(0.9);
 }
 
+/* GALERIE */
 .gallery {
   margin-top: 4rem;
   width: 100%;
@@ -129,7 +213,6 @@ const subtitles = computed(() => {
 }
 
 .gallery-title {
-  color: white;
   margin-bottom: 2rem;
 }
 
@@ -151,15 +234,11 @@ const subtitles = computed(() => {
   transform: scale(1.03);
 }
 
-/* --- LIGHTBOX STYLES --- */
-
+/* LIGHTBOX */
 .lightbox {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  inset: 0;
+  background-color: rgba(0,0,0,0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -169,12 +248,8 @@ const subtitles = computed(() => {
 }
 
 .lightbox-content {
-  position: relative;
   max-width: 90%;
   max-height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .lightbox-img {
@@ -182,7 +257,6 @@ const subtitles = computed(() => {
   max-height: 90vh;
   object-fit: contain;
   border-radius: 4px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .close-btn {
@@ -194,11 +268,9 @@ const subtitles = computed(() => {
   color: white;
   font-size: 3rem;
   cursor: pointer;
-  z-index: 10000;
-  line-height: 1;
 }
 
-/* Animation Fade */
+/* FADE */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -209,24 +281,19 @@ const subtitles = computed(() => {
   opacity: 0;
 }
 
-/* Responsive mobile */
+/* MOBILE */
 @media (max-width: 768px) {
-  .title, .subtitle {
+  .top-section {
+    grid-template-columns: 1fr;
+  }
+
+  .title,
+  .subtitle {
     max-width: 90%;
   }
 
   .image {
     max-width: 95%;
-    margin-bottom: 5vh;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .close-btn {
-    top: 10px;
-    right: 20px;
   }
 }
 </style>

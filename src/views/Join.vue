@@ -18,12 +18,12 @@ export default {
 
         <v-card-text class="text">
           <p class="intro">
-            Bonjour, pour vos cérémonies, mariages, anniversaires et fêtes en tout genre, vous pouvez louer votre vaisselle avec Atlas loc & services.
+            Bonjour, pour vos cérémonies, mariages, anniversaires et fêtes en tout genre, vous pouvez louer votre matériel de réception et de fête avec Atlas loc & services.
           </p>
 
           <ul class="advantages">
             <li><span class="bullet">🟢</span><span>Vaisselle</span></li>
-            <li><span class="bullet">🟢</span><span>Tente</span></li>
+            <li><span class="bullet">🟢</span><span>Chapiteau</span></li>
             <li><span class="bullet">🟢</span><span>Structure gonflable</span></li>
           </ul>
 

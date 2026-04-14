@@ -15,8 +15,7 @@ export default {
       logo: { text: 'Accueil', route: '/', icon: logoImg },
       tabs: [
         { text: 'À propos', route: '/about' },
-        { text: 'Galerie', route: '/pictures' },
-        { text: 'Tarifs', route: '/costs' },
+        { text: 'Prestations', route: '/pictures' },
       ],
       contact: { text: 'Contact', route: 'contact' },
       activeTab: null,

@@ -9,25 +9,18 @@ export default {
     <h1 class="title">Qui sommes-nous ?</h1>
 
     <p class="subtitle">
-      Nous sommes une société de loueurs de matériel Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis non dolores veniam consequuntur soluta at totam, nesciunt sequi sit, aperiam commodi. Consequatur amet in excepturi optio eligendi. Magni, itaque architecto!
+      Nous sommes une société de loueurs de matériel située dans la commune de Saint-Aubin-sur-Gaillon dans l'Eure.
     </p>
 
     <p class="subtitle">
-      Lorem ipsum dolor, sit amet consectetur adipisicit. Incidunt ea unde sed molestiae enim aliquid fuga expedita fugiat necessitatibus? Laborum suscipit impedit reprehenderit a. Maxime vero esse fugit ducimus voluptatibus.
+      Nous proposons à la location tout un matériel de fête et de réception, comme de la vaisselle, des structures gonflables ou même des chapiteaux.
     </p>
 
-    <h1 class="second-title">Pourquoi ?</h1>
+    <img class="image" src="@/assets/outside-tent.jpeg" alt="Chapiteau extérieur">
 
     <p class="subtitle">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat accusantium eligendi? Et, repellendus! Tempore sit accusamus, delectus quae debitis autem. Neque harum architecto, quisquam in reprehenderit incidunt nam mollitia!
-    </p>
-
-    <img class="image" src="@/assets/outside-tent.jpeg" alt="Tente extérieure">
-
-    <p class="subtitle">
-      N’hésitez pas à parcourir les différentes rubriques du site, et notamment
-      la section <RouterLink to="/pictures" class="link">Galerie</RouterLink>,
-      pour vous faire une idée des services proposés 😊.
+      N’hésitez pas à aller voir la section <RouterLink to="/pictures" class="link">Prestations</RouterLink>,
+      pour vous faire une idée des services proposés ainsi que les tarifs associés 😊.
     </p>
   </div>
 </template>

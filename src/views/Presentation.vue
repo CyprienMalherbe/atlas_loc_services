@@ -2,7 +2,6 @@
 import aboutImg from '@/assets/about.jpeg'
 import picturesImg from '@/assets/pictures.jpg'
 import contactImg from '@/assets/contact.jpg'
-import costsImg from '@/assets/costs.jpg'
 
 export default {
   name: 'Presentation',
@@ -10,8 +9,7 @@ export default {
     return {
       cards: [
         { title: 'À propos', image: aboutImg, route: 'about' },
-        { title: 'Galerie', image: picturesImg, route: 'pictures' },
-        { title: 'Tarifs', image: costsImg, route: 'costs' },
+        { title: 'Prestations', image: picturesImg, route: 'pictures' },
         { title: 'Contact', image: contactImg, route: 'contact' },
       ],
     }
