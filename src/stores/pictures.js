@@ -32,19 +32,22 @@ export const usePicturesStore = defineStore("pictures", {
   state: () => ({
     cards: [
       {
-        title: "Chapiteaux",
+        title: "Chapiteau",
         images: [tentImg, tentImg1, tentImg2, tentImg3],
         published: new Date("2026-01-01T03:24:00"),
         subtitle1:
-          "Chapiteau élégant Basic 500 avec une bâche robuste et de grandes fenêtres pour une belle luminosité – parfait pour toutes sortes de fêtes nécessitant un espace supplémentaire. Structure stable en tubes d’acier galvanisé. Les parois d’extrémité sont dotées de fermetures éclair pour pouvoir les ouvrir facilement et assurer une bonne ventilation.",
+          "Chapiteau élégant avec une bâche robuste et de grandes fenêtres pour une belle luminosité – parfait pour toutes sortes de fêtes nécessitant un espace supplémentaire. Structure stable en tubes d’acier galvanisé. Les parois d’extrémité sont dotées de fermetures éclair pour pouvoir les ouvrir facilement et assurer une bonne ventilation.",
         subtitle2:
-          " Le chapiteau Basic 500 est une alternative fonctionnelle et économique à nos chapiteaux en PVC. Les dimensions des chapiteaux sont 5 x 10 m.",
+          " Le chapiteau 500 est une alternative fonctionnelle et économique à nos chapiteaux en PVC. Les dimensions des chapiteaux sont 5 x 10 m.",
         prices: [
-          { title: "Location journée", price: "120 €" },
           { title: "Location week-end", price: "200 €" },
           {
             title: "Frais de livraison",
             price: "Offerts si rayon < 10 km autour de Gailon",
+          },
+          {
+            title: "Lumière et chauffage",
+            price: "Inclus",
           },
         ],
       },
